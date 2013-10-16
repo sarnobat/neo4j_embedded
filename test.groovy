@@ -7,13 +7,14 @@ import org.neo4j.tooling.GlobalGraphOperations;
 GraphDatabaseService graphDb = new GraphDatabaseFactory().newEmbeddedDatabase("yurl.db");
 
 
-//
-// Create node
-//
 
 Transaction tx = graphDb.beginTx();
 try
 {
+
+	//
+	// Create node
+	//
 	Node firstNode = graphDb.createNode();
 	firstNode.setProperty( "url", "http://www.objectivity.com" );
 	// Updating operations go here
@@ -29,18 +30,27 @@ finally
 // Print nodes
 //
 
-Iterable<Node> allNodes = GlobalGraphOperations.at(graphDb).getAllNodes();
-for (final Node node : allNodes) {
-	String title = "";
-	if (node.hasProperty("title")) {
-		title = (String) node.getProperty("title");
-	}
-	String name = "";
-	if (node.hasProperty("url")) {
-		name = (String) node.getProperty("url");
-	}
+Transaction tx2 = graphDb.beginTx();
+try
+{
 
-	System.out.println("\"" + title + "\",\"" + name + "\"");
-	System.out.println(name);
-	System.out.println();
+	Iterable<Node> allNodes = GlobalGraphOperations.at(graphDb).getAllNodes();
+	for (final Node node : allNodes) {
+		String title = "";
+		if (node.hasProperty("title")) {
+			title = (String) node.getProperty("title");
+		}
+		String name = "";
+		if (node.hasProperty("url")) {
+			name = (String) node.getProperty("url");
+		}
+	
+		System.out.println("\"" + title + "\",\"" + name + "\"");
+		System.out.println(name);
+		System.out.println();
+	}
+}
+finally
+{
+	tx.finish();
 }
