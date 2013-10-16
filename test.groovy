@@ -52,5 +52,5 @@ try
 }
 finally
 {
-	tx.finish();
+	tx2.finish();
 }
