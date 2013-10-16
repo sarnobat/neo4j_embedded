@@ -6,15 +6,14 @@ import org.neo4j.tooling.GlobalGraphOperations;
 
 GraphDatabaseService graphDb = new GraphDatabaseFactory().newEmbeddedDatabase("yurl.db");
 
-
+//
+// Create node
+//
 
 Transaction tx = graphDb.beginTx();
 try
 {
 
-	//
-	// Create node
-	//
 	Node firstNode = graphDb.createNode();
 	firstNode.setProperty( "url", "http://www.objectivity.com" );
 	// Updating operations go here
