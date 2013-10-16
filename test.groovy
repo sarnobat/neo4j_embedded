@@ -15,6 +15,7 @@ try
 {
 
 	Node firstNode = graphDb.createNode();
+	firstNode.setProperty( "name", "Sridhar");
 	firstNode.setProperty( "url", "http://www.objectivity.com" );
 	// Updating operations go here
 	tx.success();
@@ -36,8 +37,8 @@ try
 	Iterable<Node> allNodes = GlobalGraphOperations.at(graphDb).getAllNodes();
 	for (final Node node : allNodes) {
 		String title = "";
-		if (node.hasProperty("title")) {
-			title = (String) node.getProperty("title");
+		if (node.hasProperty("name")) {
+			title = (String) node.getProperty("name");
 		}
 		String name = "";
 		if (node.hasProperty("url")) {
