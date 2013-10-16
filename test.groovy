@@ -4,7 +4,7 @@ import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.neo4j.tooling.GlobalGraphOperations;
 
-GraphDatabaseService graphDb = new GraphDatabaseFactory().newEmbeddedDatabase("yurl.db");
+GraphDatabaseService graphDb = new GraphDatabaseFactory().newEmbeddedDatabase("sridharData.db");
 
 //
 // Create node
